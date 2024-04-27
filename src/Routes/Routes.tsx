@@ -3,14 +3,15 @@ import { lazy, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { Page, RoutesPrefixes } from './types';
-import Header from '../Layouts/Header';
-import Footer from '../Layouts/Footer';
+
 import Page404 from '../Pages/Page404';
 import ProtectedRoute from './ProtectedRoute';
 import Authentication from '../Pages/Authentication';
 import Signin from '../Components/Authentication/SignIn';
-const HomePage = lazy(() => import('../Pages/Homepage'));
 
+//dynamic imports
+const HomePage = lazy(() => import('../Pages/Homepage'));
+const Contract = lazy(() => import('../Pages/Contract'));
 
 
 
@@ -18,6 +19,7 @@ const HomePage = lazy(() => import('../Pages/Homepage'));
 
 const {
   homePage,
+  contract,
   authenticateUser
 } = RoutesPrefixes;
 export const pages: Page[] = [
@@ -29,6 +31,10 @@ export const pages: Page[] = [
     path: `${authenticateUser}`,
     component: <Authentication/>,
   },
+  {
+    path:`${contract}/:contractid/:contractType`,
+    component:<Contract/>
+  }
   
 ];
 
