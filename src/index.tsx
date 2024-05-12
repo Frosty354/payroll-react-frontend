@@ -1,29 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+
 import reportWebVitals from './reportWebVitals';
 
 import RouterComponent from './Routes/Routes';
 import { Provider } from 'react-redux'
 import store from './Store/store';
 import Layout from './Layouts/Layout';
-
+import { ChakraProvider } from '@chakra-ui/react';
+import theme from './theme/theme';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    
-        <Provider store={store}>
-          <Layout>
-            <RouterComponent/>
-          </Layout>
+      <ChakraProvider theme={theme} >
+          <Provider store={store}>
+            <Layout>
+              <RouterComponent/>
+            </Layout>
+              
             
-          
-      </Provider>
-    
+        </Provider>
+      </ChakraProvider>
   </React.StrictMode>
 );
 

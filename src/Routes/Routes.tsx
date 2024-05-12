@@ -8,6 +8,7 @@ import Page404 from '../Pages/Page404';
 import ProtectedRoute from './ProtectedRoute';
 import Authentication from '../Pages/Authentication';
 import Signin from '../Components/Authentication/SignIn';
+import FormComponent from '../Components/FormComponent';
 
 //dynamic imports
 const HomePage = lazy(() => import('../Pages/Homepage'));
@@ -34,6 +35,10 @@ export const pages: Page[] = [
   {
     path:`${contract}/:contractid/:contractType`,
     component:<Contract/>
+  },
+  {
+    path:'/',
+    component:<FormComponent/>
   }
   
 ];
@@ -55,7 +60,7 @@ const RoutesComponent = () => {
   return (
     <BrowserRouter>
       
-      <ProtectedRoute>
+      {/* <ProtectedRoute> */}
         <Routes>
         {pages.map(({ component, path }) => {
             return (
@@ -72,7 +77,7 @@ const RoutesComponent = () => {
           })}
           <Route element={<Page404 />} path='*' />
         </Routes>
-      </ProtectedRoute>
+      {/* </ProtectedRoute> */}
       <div className='grid justify-items-center'>
        
       </div>
