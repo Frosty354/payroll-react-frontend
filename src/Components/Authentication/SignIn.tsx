@@ -1,14 +1,13 @@
-import { Box, Link, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { selectIsAuthenticated, setUser,clearUser } from '../../Store/Slices/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import '../../Styles/Authentication.scss'
+import { Flex, Input, Text } from '@chakra-ui/react';
 
 const test_API=`https://reqres.in/api/login`;
 const test_email='eve.holt@reqres.in';
@@ -144,11 +143,11 @@ const Signin = () => {
     <div className='image-container'>
       {/* <img src={} alt='company-logo'/> */}
     </div>
-    <Typography className='subText'><strong>Hello there, Sign in to Continue</strong></Typography>
+    <Text className='subText'><strong>Hello there, Sign in to Continue</strong></Text>
     <form>
       <div className="form-group">
         <label className="label">Email</label>
-        <TextField
+        <Input
           className="input"
           type="email"
           value={email}
@@ -157,16 +156,16 @@ const Signin = () => {
       </div>
       <div className="form-group">
         <label className="label">Password</label>
-        <TextField
+        <Input
           className="input"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          InputProps={{endAdornment:<VisibilityIcon color='action'/>}}
+         
         />
       </div>
-      <Box sx={{
-        display:'flex',
+      <Flex sx={{
+        
         justifyContent:'space-between',
         textAlign:'left',
         pt:2,
@@ -186,12 +185,9 @@ const Signin = () => {
             and <strong>Privacy Policies.</strong>
           </label>
         
-      </Box>
+      </Flex>
       <button disabled={!checked || !email.length|| !password.length} className="button" onClick={handleSubmit}>Login</button>
     </form>
-    <div style={{paddingTop:'40px'}}>
-      <Link underline='none'><strong>Signin with company SSO</strong></Link>
-    </div>
     <ToastContainer />
   </div>
   )
